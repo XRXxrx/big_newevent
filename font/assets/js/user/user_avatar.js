@@ -18,11 +18,13 @@ $(function() {
         $('#file').click()
     });
 
+    let fd = new FormData();
     //修改裁剪图片
     let layer = layui.layer;
     $('#file').on('change', function(e) {
         //拿到用户选择的文件，e.target相当于this
         let file = e.target.files[0];
+        fd.append('file_data', file);
         //非空校验
         if (file === undefined) {
             return layer.msg('请选择图片!');
@@ -51,17 +53,39 @@ $(function() {
         $.ajax({
             method: 'POST',
             url: '/my/update/avatar',
-            data: {
-                avatar: dataURL
-            },
+            // data: {
+            //     avatar: dataURL
+            // },
+            data: fd,
+            processData: false, // 无需 jq 处理数据
+            contentType: false, // 无需 jq 处理内容类型
             success: function(res) {
+                // console.log(res);
+                let userPic = res.message;
                 if (res.status !== 0) {
-                    return layer.msg('更换头像失败！', {
+                    return layer.msg('上传头像失败！', {
                         icon: 5
                     })
-                }
-                layer.msg('更换头像成功！', {
+                };
+                layer.msg('上传头像成功！', {
                     icon: 6
+                });
+                $.ajax({
+                    method: 'post',
+                    url: '/my/uploadPic',
+                    data: { userPic: userPic },
+                    success: function(res) {
+                        console.log(res);
+
+                        if (res.status !== 0) {
+                            return layer.msg('更换头像失败！', {
+                                icon: 5
+                            })
+                        };
+                        layer.msg('更换头像成功！', {
+                            icon: 6
+                        });
+                    }
                 })
                 window.parent.getUserInfo()
             }

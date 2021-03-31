@@ -27,7 +27,7 @@ function getUserInfo() {
         //     Authorization: localStorage.getItem('token') || ''
         // },
         success: (res) => {
-            // console.log(res);
+            console.log(res);
             // 请求失败,返回提升信息
             if (res.status !== 0) {
                 return layui.layer.msg(res.message, {
@@ -50,8 +50,8 @@ function getUserInfo() {
         $('#welcome').html('欢迎&nbsp&nbsp' + name);
         //渲染头像
         //如果有头像就用获取到的头像，如果没有就用文字头像
-        if (user.user_pic !== null) {
-            $('.layui-nav-img').show().attr('src', user.user_pic);
+        if (user.userPic !== null) {
+            $('.layui-nav-img').show().attr('src', user.userPic);
             $('.text-avatar').hide();
         } else {
             $('.layui-nav-img').hide();

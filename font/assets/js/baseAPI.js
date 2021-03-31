@@ -2,7 +2,7 @@
 // 会先调用 ajaxPrefilter 这个函数
 // 在这个函数中，可以拿到我们给Ajax提供的配置对象
 // 1.开发环境服务器地址
-let baseURL = 'http://api-breakingnews-web.itheima.net';
+let baseURL = 'http://127.0.0.1:3003';
 // 2.测试环境服务器地址
 // let baseURL = 'http://api-breakingnews-web.itheima.net';
 // 3.生产环境服务器地址
@@ -21,7 +21,7 @@ $.ajaxPrefilter(function(option) {
     }
     //拦截所有响应，判断用户身份认证信息（登录拦截）
     option.complete = function(res) {
-        console.log(res);
+        // console.log(res);
         let obj = res.responseJSON;
         if (obj.status === 1 && obj.message === '身份认证失败！') {
             //清空本地令牌

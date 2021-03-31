@@ -41,7 +41,7 @@ $(function() {
                 $('.layui-form')[0].reset();
                 // 重登
                 // localStorage.removeItem('token');
-                // window.parent.location.href = '/login.html';
+                window.parent.location.href = '/login.html';
             }
         })
     });

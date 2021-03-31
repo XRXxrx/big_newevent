@@ -72,7 +72,7 @@ $(function() {
             url: '/api/login',
             data: $(this).serialize(),
             success: (res) => {
-                // console.log(res);
+                console.log(res);
                 // 返回失败状态
                 if (res.status !== 0) {
                     return layer.msg(res.message, {

@@ -70,10 +70,10 @@ $(function() {
         // 发起请求获取对应分类的数据到form表单中
         $.ajax({
             type: 'get',
-            url: '/my/article/cates/' + Id,
-            data: {},
+            url: '/my/article/cates',
+            data: { id: Id },
             success: (res) => {
-                // console.log(res);
+                console.log(res);
                 if (res.status !== 0) {
                     return layer.msg(res.message, {
                         icon: 5
@@ -118,8 +118,8 @@ $(function() {
             //do something
             $.ajax({
                 type: 'get',
-                url: '/my/article/deletecate/' + Id,
-                data: {},
+                url: '/my/article/deletecate',
+                data: { id: Id },
                 success: (res) => {
                     // console.log(res);
                     if (res.status !== 0) {
