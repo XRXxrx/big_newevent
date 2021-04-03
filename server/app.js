@@ -21,7 +21,6 @@ server.use(jwt({
 
 server.all('*', (req, res, next) => {
     next();
-
 });
 server.use('/api', userInfo);
 server.use('/my', indexInfo);
