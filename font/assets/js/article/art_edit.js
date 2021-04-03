@@ -108,8 +108,9 @@ $(function() {
     //定义一个发布文章的方法
     //如果是提交的是`FormData`格式数据，需要添加 `contentType：false ，processData：false`
     function publishArticle(fd) {
+        console.log(...fd);
         $.ajax({
-            type: 'post',
+            method: 'post',
             url: '/my/article/edit',
             data: fd,
             // 注意：如果向服务器提交的是 FormData 格式的数据，

@@ -72,7 +72,7 @@ router.post('/update/avatar', upload.single('file_data'), function(req, res, nex
 router.post('/uploadPic', (req, res) => {
     let { name } = req.user;
     let { userPic } = req.body;
-    // console.log(name, userPic);
+    console.log(name, userPic);
     conn.query(`update users set userPic="${userPic}" where username="${name}"`, (err, result) => {
         // console.log(result);
         if (err) {

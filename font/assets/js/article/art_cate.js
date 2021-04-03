@@ -70,8 +70,8 @@ $(function() {
         // 发起请求获取对应分类的数据到form表单中
         $.ajax({
             type: 'get',
-            url: '/my/article/cates',
-            data: { id: Id },
+            url: '/my/article/cates/' + Id,
+            data: {},
             success: (res) => {
                 console.log(res);
                 if (res.status !== 0) {
@@ -88,6 +88,7 @@ $(function() {
     //更新文章分类
     $('body').on('submit', '#form-edit', function(e) {
         e.preventDefault();
+        // console.log($(this).serialize());
         $.ajax({
             type: 'post',
             url: '/my/article/updatecate',
@@ -118,8 +119,8 @@ $(function() {
             //do something
             $.ajax({
                 type: 'get',
-                url: '/my/article/deletecate',
-                data: { id: Id },
+                url: '/my/article/deletecate/' + Id,
+                data: {},
                 success: (res) => {
                     // console.log(res);
                     if (res.status !== 0) {
